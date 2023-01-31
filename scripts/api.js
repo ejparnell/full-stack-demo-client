@@ -2,7 +2,7 @@ import { store } from './store.js'
 
 // User actions
 export const signUp = (data) => {
-	return fetch(`http://localhost:8000/sign-up`, {
+	return fetch(`https://mysterious-ridge-45695.herokuapp.com/sign-up`, {
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
@@ -13,7 +13,7 @@ export const signUp = (data) => {
 }
 
 export const signIn = (data) => {
-	return fetch(`http://localhost:8000/sign-in`, {
+	return fetch(`https://mysterious-ridge-45695.herokuapp.com/sign-in`, {
 		method: 'POST',
 		headers: {
 			'Accept': 'application/json',
@@ -25,7 +25,7 @@ export const signIn = (data) => {
 
 // Character Actions
 export const indexCharacters = () => {
-	return fetch(`http://localhost:8000/characters`, {
+	return fetch(`https://mysterious-ridge-45695.herokuapp.com/characters`, {
 		headers: {
 			'Authorization': `Bearer ${store.userToken}`,
 		},
@@ -33,7 +33,7 @@ export const indexCharacters = () => {
 }
 
 export const showCharacter = (id) => {
-	return fetch(`http://localhost:8000/characters/${id}`, {
+	return fetch(`https://mysterious-ridge-45695.herokuapp.com/characters/${id}`, {
 		headers: {
 			Authorization: `Bearer ${store.userToken}`,
 		},
@@ -41,7 +41,7 @@ export const showCharacter = (id) => {
 }
 
 export const updateCharacter = (data, id) => {
-	return fetch(`http://localhost:8000/characters/${id}`, {
+	return fetch(`https://mysterious-ridge-45695.herokuapp.com/characters/${id}`, {
 		method: 'PATCH',
 		headers: {
 			'Accept': 'application/json',
@@ -53,25 +53,28 @@ export const updateCharacter = (data, id) => {
 }
 
 export const deleteCharacter = (id) => {
-	return fetch(`http://localhost:8000/characters/${id}`, {
-		method: 'DELETE',
+	return fetch(
+		`https://mysterious-ridge-45695.herokuapp.com/characters/${id}`,
+		{
+			method: 'DELETE',
+			headers: {
+				Authorization: `Bearer ${store.userToken}`,
+			},
+		}
+	)
+}
+
+// Campaign Actions
+export const indexCampaign = () => {
+	return fetch('https://mysterious-ridge-45695.herokuapp.com/campaigns', {
 		headers: {
 			Authorization: `Bearer ${store.userToken}`,
 		},
 	})
 }
 
-// Campaign Actions
-export const indexCampaign = () => {
-	return fetch('http://localhost:8000/campaigns', {
-		headers: {
-			'Authorization': `Bearer ${store.userToken}`
-		}
-	})
-}
-
 export const showCampaign = (id) => {
-	return fetch(`http://localhost:8000/campaigns/${id}`, {
+	return fetch(`https://mysterious-ridge-45695.herokuapp.com/campaigns/${id}`, {
 		headers: {
 			Authorization: `Bearer ${store.userToken}`,
 		},
@@ -79,7 +82,7 @@ export const showCampaign = (id) => {
 }
 
 export const updateCampaign = (data, id) => {
-	return fetch(`http://localhost:8000/campaigns/${id}`, {
+	return fetch(`https://mysterious-ridge-45695.herokuapp.com/campaigns/${id}`, {
 		method: 'PATCH',
 		headers: {
 			Accept: 'application/json',
@@ -91,7 +94,7 @@ export const updateCampaign = (data, id) => {
 }
 
 export const deleteCampaign = (id) => {
-	return fetch(`http://localhost:8000/campaigns/${id}`, {
+	return fetch(`https://mysterious-ridge-45695.herokuapp.com/campaigns/${id}`, {
 		method: 'DELETE',
 		headers: {
 			Authorization: `Bearer ${store.userToken}`,
